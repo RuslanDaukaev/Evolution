@@ -2,6 +2,8 @@
 #include <iostream>
 #include "entities.h"
 
+
+
 World::World(int width, int height) :
     width(width),
     height(height)
@@ -36,7 +38,14 @@ void World::spawnCell(int x, int y) {
     if (!isEmpty(x, y))
         return;
     else
-        grid[y][x] = std::make_unique<Cell>(x, y);
+        grid[y][x] = std::make_unique<Cell>(x, y, *this);
+}
+
+void World::spawnCell(int x, int y, std::vector<int> genome) {
+    if (!isEmpty(x, y))
+        return;
+    else
+        grid[y][x] = std::make_unique<Cell>(x, y, *this, genome);
 }
 
 bool World::isEmpty(int x, int y) {
@@ -69,3 +78,11 @@ void World::update() {
         }
     }
 }
+
+void World::spawnFood(int x, int y) {
+    if (!isEmpty(x, y))
+        return;
+    else
+        grid[y][x] = std::make_unique<Food>(x, y);
+}
+

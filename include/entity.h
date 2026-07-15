@@ -14,7 +14,7 @@ public:
     virtual ~Entity() = default;
 
     virtual void update(World& world) = 0;
-    virtual char getSymbol() const = 0;
+    virtual std::string getSymbol() const = 0;
 
 private:
     

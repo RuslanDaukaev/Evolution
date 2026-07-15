@@ -9,6 +9,8 @@ public:
 
     World(int width, int height);
     void spawnCell(int x, int y);
+    void spawnCell(int x, int y, std::vector<int> genome);
+    void spawnFood(int x, int y);
     bool isEmpty(int x, int y);
     void draw() const;
 
